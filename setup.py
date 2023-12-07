@@ -1,19 +1,24 @@
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+import setuptools
 
-config = {
-        'description': 'My Project',
-        'author': 'Kelly McCuddy',
-        'url': 'URL to get it at.',
-        'download_url': 'Where to download it.',
-        'author_email': 'kmccuddy@protonmail.com',
-        'version': '0.1',
-        'install_requires': ['nose'],
-        'packages': ['NAME'],
-        'scripts': [],
-        'name': 'projectname'
-        }
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+with open ("requirements.txt", "r") as fh:
+    requirements = [line.strip() for line in fh]
 
-setup(**config)
+setuptools.setup(
+    name="tracc",
+    version="0.0.1",
+    author="Kelly McCuddy",
+    author_email="kelly@graewolf.com",
+    description="Traveller character creator",
+    long_description=long_description,
+    long_description_content_type="text/md",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: Creative Commons",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.12',
+    install_requires=requirements,
+)
